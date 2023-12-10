@@ -98,7 +98,7 @@ public class ClaseController {
 	 */
     @ApiOperation(value = "Get a class by id", notes = "Returns a class as per the id")
     @ApiResponses(value = {
-      @ApiResponse(code = 200, message = "Successfully retrieved,kid found"),
+      @ApiResponse(code = 200, message = "Successfully retrieved,clase found"),
       @ApiResponse(code = 404, message = "ERROR:class not found"),
       @ApiResponse(code = 400, message = "Bad request"),
       @ApiResponse(code = 500, message = "Internal Error ")
@@ -109,8 +109,8 @@ public class ClaseController {
 
 		if (id != null && id > -1) {
 			try {
-				Clase kid = service.getClassById(id);
-				return new ResponseEntity<Clase>(kid, new HttpHeaders(), HttpStatus.OK);
+				Clase clase = service.getClassById(id);
+				return new ResponseEntity<Clase>(clase, new HttpHeaders(), HttpStatus.OK);
 			} catch (ResponseStatusException e) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La clase con id: " + id + "no se ha encontrado",
 						e);
@@ -142,8 +142,8 @@ public class ClaseController {
 	public ResponseEntity<Clase> createClass(@RequestBody Clase n) throws ResponseStatusException {
 		if (n != null) {
 			try {
-				Clase kid = service.createClass(n);
-				return new ResponseEntity<Clase>(kid, new HttpHeaders(), HttpStatus.OK);
+				Clase clase = service.createClass(n);
+				return new ResponseEntity<Clase>(clase, new HttpHeaders(), HttpStatus.OK);
 			} catch (ResponseStatusException e) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La clase no ha sido guardado correctamente", e);
 			}
